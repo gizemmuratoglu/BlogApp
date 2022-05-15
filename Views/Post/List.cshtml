@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BlogApp.Models.PostModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+
+<body>
+    <br />
+    <br />
+    <div class="row">
+
+        <div class="col-md-3 list-group">
+            @{Html.RenderAction("CategoryList", "Category");}
+        </div>
+
+
+
+
+
+        <div class="col-md-9 ">
+            @foreach (var item in Model)
+            {
+<div class="card">
+    <h5 class="card-header"> <b>@item.Title</b> </h5>
+    <div class="card-body">
+        <h5 class="card-title">@item.CategoryName</h5>
+        <p class="card-text">@item.Text</p>
+        <p class="card-text"><small>@item.Date</small></p>
+
+
+        @Html.ActionLink("See More..", "Details", "Post", new { id = item.Id }, new { @class = "btn btn-primary" }) |
+
+
+    </div>
+</div>            }
+        </div>
+    </div>
+</body>
+
+</html>
