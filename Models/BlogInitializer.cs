@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace BlogApp.Models
 {
-    public class BlogInitializer: DropCreateDatabaseIfModelChanges<BlogContext>
+    public class BlogInitializer : DropCreateDatabaseIfModelChanges<BlogContext>
     {
         protected override void Seed(BlogContext context)
         {
@@ -31,7 +29,7 @@ namespace BlogApp.Models
                     Text = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
                     CategoryId=1,
                     Date= DateTime.Now
-                  
+
                 },
                   new Post()
                 {
@@ -63,7 +61,7 @@ namespace BlogApp.Models
                 }
 
 
-                } ;
+                };
             foreach (var item in posts)
             {
                 context.Posts.Add(item);
@@ -71,7 +69,7 @@ namespace BlogApp.Models
             }
             context.SaveChanges();
 
-          
+
 
             base.Seed(context);
         }

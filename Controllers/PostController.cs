@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BlogApp.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BlogApp.Models;
 
 namespace BlogApp.Controllers
 {
@@ -23,7 +21,7 @@ namespace BlogApp.Controllers
                    Title = i.Title,
                    Text = i.Text,
                    Date = i.Date,
-                   CategoryId=i.CategoryId,
+                   CategoryId = i.CategoryId,
                    CategoryName = i.Category.CategoryName,
                }).AsQueryable();
 
@@ -38,7 +36,7 @@ namespace BlogApp.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.Category).OrderByDescending(i=> i.Date);
+            var posts = db.Posts.Include(p => p.Category).OrderByDescending(i => i.Date);
             return View(posts.ToList());
         }
 
@@ -55,7 +53,7 @@ namespace BlogApp.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", post.CategoryId);
-            
+
             return View(post);
         }
 
@@ -63,7 +61,7 @@ namespace BlogApp.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName");
-           
+
             return View();
         }
 
@@ -83,7 +81,7 @@ namespace BlogApp.Controllers
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", post.CategoryId);
-          
+
             return View(post);
         }
 
@@ -100,7 +98,7 @@ namespace BlogApp.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", post.CategoryId);
-            
+
             return View(post);
         }
 
@@ -118,7 +116,7 @@ namespace BlogApp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", post.CategoryId);
-            
+
             return View(post);
         }
 

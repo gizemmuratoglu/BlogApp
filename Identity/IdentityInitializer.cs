@@ -1,11 +1,7 @@
-﻿using BlogApp.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 
 namespace BlogApp.Identity
 {
@@ -24,25 +20,25 @@ namespace BlogApp.Identity
             {
                 var store = new RoleStore<ApplicationRole>(context);
                 var manager = new RoleManager<ApplicationRole>(store);
-                var role = new ApplicationRole() { Name="user", Description="UserDesc"};
+                var role = new ApplicationRole() { Name = "user", Description = "UserDesc" };
                 manager.Create(role);
             }
 
 
-            if (!context.Users.Any(i=> i.Name =="Gizem"))
+            if (!context.Users.Any(i => i.Name == "Gizem"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser()
                 {
-                    Name="Gizem",
+                    Name = "Gizem",
                 };
                 manager.Create(user, "123456");
                 manager.AddToRole(user.Id, "admin");
                 manager.AddToRole(user.Id, "user");
 
             }
-            
+
             base.Seed(context);
         }
 

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BlogApp.Identity;
+using BlogApp.Models;
+using System;
+using System.Data.Entity;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
-using System.Web.Http;
-using System.Data.Entity;
-using BlogApp.Models;
-using BlogApp.Identity;
 
 namespace BlogApp
 {

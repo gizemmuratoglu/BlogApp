@@ -3,9 +3,6 @@ using BlogApp.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,7 +14,7 @@ namespace BlogApp.Controllers
         private RoleManager<ApplicationRole> RoleManager;
         // GET: Acoount
 
-        public  AccountController()
+        public AccountController()
         {
             var userStore = new UserStore<ApplicationUser>(new IdentityDataContext());
             UserManager = new UserManager<ApplicationUser>(userStore);
@@ -40,7 +37,7 @@ namespace BlogApp.Controllers
                 user.Name = model.Name;
                 user.UserName = model.UserName;
 
-                IdentityResult result= UserManager.Create(user, model.Password);
+                IdentityResult result = UserManager.Create(user, model.Password);
 
                 if (result.Succeeded)
                 {
@@ -50,10 +47,10 @@ namespace BlogApp.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("registerERROR","Register Error.");
+                    ModelState.AddModelError("registerERROR", "Register Error.");
 
                 }
-              
+
             }
 
 
@@ -73,23 +70,23 @@ namespace BlogApp.Controllers
         {
             if (ModelState.IsValid)
             {
-               // Console.WriteLine(model.Password + model.UserName);
-            var user = UserManager.Find(model.UserName, model.Password);
+                // Console.WriteLine(model.Password + model.UserName);
+                var user = UserManager.Find(model.UserName, model.Password);
 
-            if(user != null)
-            {
-                var authManager = HttpContext.GetOwinContext().Authentication;
-                var identityclaims = UserManager.CreateIdentity(user, "ApplicationCookie");
-                var authProperties = new AuthenticationProperties();
-                new AuthenticationProperties().IsPersistent = model.RememberMe;
-                authManager.SignIn(authProperties,identityclaims);
+                if (user != null)
+                {
+                    var authManager = HttpContext.GetOwinContext().Authentication;
+                    var identityclaims = UserManager.CreateIdentity(user, "ApplicationCookie");
+                    var authProperties = new AuthenticationProperties();
+                    new AuthenticationProperties().IsPersistent = model.RememberMe;
+                    authManager.SignIn(authProperties, identityclaims);
 
-                return RedirectToAction("Index","Home");
-            }
-            else
-            {
-                return RedirectToAction("Index", "Category");
-            }
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Category");
+                }
             }
             return View(model);
         }
@@ -99,7 +96,7 @@ namespace BlogApp.Controllers
             var authManager = HttpContext.GetOwinContext().Authentication;
             authManager.SignOut();
 
-            return RedirectToAction("Index","Post");
+            return RedirectToAction("Index", "Post");
         }
 
 

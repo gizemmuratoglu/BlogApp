@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace BlogApp.Models
 {
@@ -17,7 +14,7 @@ namespace BlogApp.Models
         [DisplayName("Password")]
         public String Password { get; set; }
 
-       
+
         [DisplayName("Remember Me")]
         public bool RememberMe { get; set; }
 

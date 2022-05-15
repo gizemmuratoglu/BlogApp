@@ -10,8 +10,18 @@
     <div class="row">
        
         <div class="col-md-3 list-group">
-          @{Html.RenderAction("CategoryList", "Category");}
+            <div>
+                <p style="text-align:center;"><b>CATEGORIES </b></p>
+            </div>
+            @{Html.RenderAction("CategoryList", "Category");}
+            <br />
+            <br />
+            <div>
+                <p style="text-align:center;"><b>Data From API </b></p>
+            </div>
+            @{Html.RenderAction("ItemList", "Home");}
         </div>
+
 
 
 

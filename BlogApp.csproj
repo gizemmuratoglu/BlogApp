@@ -200,6 +200,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CoronaData.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ModelBuilder.cs" />
     <Compile Include="Models\Post.cs" />
@@ -271,6 +272,7 @@
     <Content Include="Views\Post\List.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\ItemList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

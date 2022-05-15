@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BlogApp.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BlogApp.Models;
 
 namespace BlogApp.Controllers
 {
@@ -21,14 +18,14 @@ namespace BlogApp.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            var categories = db.Categories.Select(i=>
+            var categories = db.Categories.Select(i =>
                 new CategoryModel()
                 {
-                    Id=i.Id,
-                    CategoryName=i.CategoryName,
-                    PostsNum=i.Posts.Count()
+                    Id = i.Id,
+                    CategoryName = i.CategoryName,
+                    PostsNum = i.Posts.Count()
                 }
-            
+
                 );
             return View(categories.ToList());
         }
