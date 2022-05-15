@@ -1,7 +1,0 @@
-﻿@model IEnumerable<BlogApp.Models.Category>
-
-@foreach (var item in Model)
-{
-<a href="/Post/List/@item.Id/@item.CategoryName" class="list-group-item"> <p>@item.CategoryName</p>   
-    </a>
- }
